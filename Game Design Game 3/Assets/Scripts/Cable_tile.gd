@@ -31,5 +31,5 @@ func _on_Area2D_input_event(viewport, event, shape_idx):
 					return
 				print(shape_idx)
 			BUTTON_RIGHT:
-				print("the switch tile cannot be rotated.")
+				self.rotation_degrees += 45
 	pass # Replace with function body.

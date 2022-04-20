@@ -4,42 +4,8 @@
 [ext_resource path="res://Assets/Scenes/Server_tile.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Assets/Scenes/Client_tile.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Assets/Scenes/Empty_tile.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Assets/Scripts/Server_Tile.gd" type="Script" id=5]
 [ext_resource path="res://Assets/Scenes/Inventory.tscn" type="PackedScene" id=6]
-
-[sub_resource type="GDScript" id=1]
-script/source = "extends Node2D
-export var destroyable = true
-export var baseTile = true
-export var tile_cost = 0
-export var adjacentTiles = []
-var Board 
-var Inventory 
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	Board = get_parent()
-	Inventory= get_parent().get_parent().get_node(\"Inventory\")
-
-func getAdjacentTiles():
-	
-	pass
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
-
-
-func _on_Area2D_input_event(viewport, event, shape_idx):
-	if event is InputEventMouseButton:
-		if event.is_pressed():
-			if baseTile:
-				if (Inventory.selectedTile != \"NULL\"):					
-					Board.placeTile(self.position)
-					queue_free()
-			else:
-				return
-			print(shape_idx)
-	pass # Replace with function body.
-"
 
 [node name="Root" type="Node2D"]
 
@@ -118,15 +84,14 @@ position = Vector2( -192, 192 )
 
 [node name="Server_tile" parent="Board" instance=ExtResource( 2 )]
 position = Vector2( -192, -64 )
-script = SubResource( 1 )
+script = ExtResource( 5 )
+destroyable = true
 
 [node name="Client_tile" parent="Board" instance=ExtResource( 3 )]
 position = Vector2( 64, 0 )
-script = SubResource( 1 )
 
 [node name="Client_tile2" parent="Board" instance=ExtResource( 3 )]
 position = Vector2( 64, 128 )
-script = SubResource( 1 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
@@ -134,7 +99,45 @@ current = true
 [node name="Inventory" parent="." instance=ExtResource( 6 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = -508.331
-margin_top = -345.718
-margin_right = 999.669
-margin_bottom = -80.718
+margin_left = -533.0
+margin_top = -355.0
+margin_right = 975.0
+margin_bottom = -90.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+margin_left = 135.0
+margin_top = -64.0
+margin_right = 302.0
+margin_bottom = -24.0
+
+[node name="MoneyLabel" type="Label" parent="HBoxContainer"]
+margin_top = 13.0
+margin_right = 87.0
+margin_bottom = 27.0
+text = "Money Spent:"
+
+[node name="SpentLabel" type="Label" parent="HBoxContainer"]
+margin_left = 91.0
+margin_top = 13.0
+margin_right = 107.0
+margin_bottom = 27.0
+text = "$0"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="."]
+margin_left = -214.0
+margin_top = -131.0
+margin_right = -47.0
+margin_bottom = -91.0
+
+[node name="FreeCableLabel" type="Label" parent="HBoxContainer2"]
+margin_top = 13.0
+margin_right = 106.0
+margin_bottom = 27.0
+text = "Free Cables Left:"
+
+[node name="CableNum" type="Label" parent="HBoxContainer2"]
+margin_left = 110.0
+margin_top = 13.0
+margin_right = 118.0
+margin_bottom = 27.0
+text = "3"

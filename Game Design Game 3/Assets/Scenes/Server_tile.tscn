@@ -13,4 +13,9 @@ script = ExtResource( 3 )
 texture = ExtResource( 2 )
 
 [node name="Label" parent="Area2D" index="2"]
-text = "Server"
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 18.0
+margin_top = 14.0
+margin_right = 58.0
+margin_bottom = 30.0
+text = "4"

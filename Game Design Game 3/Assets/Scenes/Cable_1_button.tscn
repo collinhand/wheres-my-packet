@@ -15,10 +15,7 @@ margin_left = 3.0
 margin_top = -15.0
 margin_right = 77.0
 margin_bottom = -1.0
-text = "Cable v1 1$"
-__meta__ = {
-"_edit_use_anchors_": false
-}
+text = "Cable v1 ($1)"
 
 [node name="Button" type="Button" parent="."]
 margin_right = 76.0
