@@ -9,7 +9,7 @@ var Inventory
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	Board = get_parent()
-	Inventory= get_parent().get_parent().get_node("Inventory")
+	Inventory = get_parent().get_parent().get_node("Inventory")
 
 func getAdjacentTiles():
 	
@@ -20,13 +20,15 @@ func getAdjacentTiles():
 
 
 func _on_Area2D_input_event(viewport, event, shape_idx):
-	if event is InputEventMouseButton:
-		if event.is_pressed():
-			if !baseTile:
-				if (Inventory.selectedTile != "NULL"):					
-					Board.placeTile(self.position)
-					queue_free()
-			else:
-				return
-			print(shape_idx)
+	if event is InputEventMouseButton and event.pressed:
+		match event.button_index:
+			BUTTON_LEFT:
+				if baseTile:
+					if (Inventory.selectedTile != "NULL"):					
+						Board.placeTile(self.position)
+						queue_free()
+				else:
+					return
+			BUTTON_RIGHT:
+				print("the switch tile cannot be rotated.")
 	pass # Replace with function body.
