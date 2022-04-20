@@ -29,7 +29,6 @@ func _on_Area2D_input_event(viewport, event, shape_idx):
 						queue_free()
 				else:
 					return
-				print(shape_idx)
 			BUTTON_RIGHT:
 				print("the switch tile cannot be rotated.")
 	pass # Replace with function body.

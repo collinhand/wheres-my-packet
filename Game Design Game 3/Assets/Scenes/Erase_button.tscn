@@ -1,9 +1,9 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://Assets/Sprites/Cable_1.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Sprites/Erasor.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Scripts/Item_button.gd" type="Script" id=2]
 
-[node name="Cable_1_button" type="Node2D"]
+[node name="Erase_button" type="Node2D"]
 script = ExtResource( 2 )
 
 [node name="Label" type="Label" parent="."]
@@ -11,15 +11,15 @@ anchor_left = 0.02
 anchor_top = 0.032
 anchor_right = 0.02
 anchor_bottom = 0.032
-margin_left = -2.0
+margin_left = 2.0
 margin_top = -16.0
-margin_right = 80.0
+margin_right = 84.0
 margin_bottom = -2.0
-text = "Cable v1 ($1)"
+text = "Erase (Free)"
 
 [node name="Button" type="Button" parent="."]
 margin_right = 76.0
 margin_bottom = 70.0
 icon = ExtResource( 1 )
 
-[connection signal="pressed" from="Button" to="." method="_on_Button_pressed" binds= [ "Cable_1" ]]
+[connection signal="pressed" from="Button" to="." method="_on_Button_pressed" binds= [ "Erase" ]]

@@ -33,19 +33,32 @@ func placeTile(newPos):
 		var instance = Cable_tile.instance()
 		instance.position = newPos
 		add_child(instance)
+		
+		# add logic here for subtracting cost/ resetting free cables if necessary
+		
 		if (Inventory.CABLE_COUNT > 3): # if all free cables not used
 			Inventory.MONEY_SPENT += 1  # take money from players account
-			self.get_parent().get_node("HBoxContainer/SpentLabel").text = str(Inventory.MONEY_SPENT) # update GUI with new value
+			self.get_parent().get_node("HBoxContainer/SpentLabel").text =  str("$") + str(Inventory.MONEY_SPENT) # update GUI with new value
 		else:
 			self.get_parent().get_node("HBoxContainer2/CableNum").text = str(3 - Inventory.CABLE_COUNT)
-	else: # if switch
+			
+	elif Inventory.selectedTile == "Switch": # if switch
 		var instance = Switch_tile.instance()
 		#instance.
 		instance.position = newPos
 		add_child(instance)
 		
+		# add logic here for subtracting cost/ resetting free cables if necessary
+		
 		Inventory.MONEY_SPENT += 3 # take money from players account
-		self.get_parent().get_node("HBoxContainer/SpentLabel").text = str(Inventory.MONEY_SPENT) # update GUI with new value
+		self.get_parent().get_node("HBoxContainer/SpentLabel").text = str("$") + str(Inventory.MONEY_SPENT) # update GUI with new value
+		
+	elif Inventory.selectedTile == "Erase": # if erase selected
+		var instance = Empty_tile.instance()
+		instance.position = newPos
+		add_child(instance)
+		
+		# add logic here for subtracting cost/ resetting free cables if necessary
 		
 	
 	
