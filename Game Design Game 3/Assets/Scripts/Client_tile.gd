@@ -19,7 +19,7 @@ func getAdjacentTiles():
 #func _process(delta):
 #	pass
 
-func _on_Client_Area2D_input_event(viewport, event, shape_idx):
+func _on_Area2D_input_event(_viewport, event, _shape_idx):
 	if event is InputEventMouseButton and event.pressed:
 		match event.button_index:
 			BUTTON_LEFT:

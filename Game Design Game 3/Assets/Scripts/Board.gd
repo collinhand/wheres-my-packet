@@ -6,6 +6,7 @@ var Inventory
 var Empty_tile 
 var Cable_tile
 var Switch_tile
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	Empty_tile = load("res://Assets/Scenes/Empty_Tile.tscn")

@@ -3,86 +3,90 @@
 [ext_resource path="res://Assets/Scenes/Board.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/Scenes/Server_tile.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Assets/Scenes/Client_tile.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Assets/Scenes/Empty_tile.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Assets/Scenes/Empty_Tile.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Assets/Scenes/Inventory.tscn" type="PackedScene" id=6]
 
 [node name="Root" type="Node2D"]
+position = Vector2( 0, 128 )
 
 [node name="Board" parent="." instance=ExtResource( 1 )]
 
-[node name="Empty_tile_scene" parent="Board" instance=ExtResource( 4 )]
+[node name="Empty_Tile2" parent="Board" instance=ExtResource( 4 )]
 position = Vector2( -128, -64 )
 
-[node name="Empty_tile_scene2" parent="Board" instance=ExtResource( 4 )]
-position = Vector2( -128, 0 )
-
-[node name="Empty_tile_scene3" parent="Board" instance=ExtResource( 4 )]
-position = Vector2( -192, 0 )
-
-[node name="Empty_tile_scene4" parent="Board" instance=ExtResource( 4 )]
-position = Vector2( -128, 64 )
-
-[node name="Empty_tile_scene5" parent="Board" instance=ExtResource( 4 )]
-position = Vector2( -192, 64 )
-
-[node name="Empty_tile_scene6" parent="Board" instance=ExtResource( 4 )]
-position = Vector2( -128, 128 )
-
-[node name="Empty_tile_scene7" parent="Board" instance=ExtResource( 4 )]
-position = Vector2( -192, 128 )
-
-[node name="Empty_tile_scene8" parent="Board" instance=ExtResource( 4 )]
-position = Vector2( -128, 192 )
-
-[node name="Empty_tile_scene10" parent="Board" instance=ExtResource( 4 )]
+[node name="Empty_Tile3" parent="Board" instance=ExtResource( 4 )]
 position = Vector2( -64, -64 )
 
-[node name="Empty_tile_scene11" parent="Board" instance=ExtResource( 4 )]
-position = Vector2( -64, 0 )
-
-[node name="Empty_tile_scene12" parent="Board" instance=ExtResource( 4 )]
-position = Vector2( -64, 64 )
-
-[node name="Empty_tile_scene13" parent="Board" instance=ExtResource( 4 )]
-position = Vector2( -64, 128 )
-
-[node name="Empty_tile_scene14" parent="Board" instance=ExtResource( 4 )]
-position = Vector2( -64, 192 )
-
-[node name="Empty_tile_scene15" parent="Board" instance=ExtResource( 4 )]
+[node name="Empty_Tile4" parent="Board" instance=ExtResource( 4 )]
 position = Vector2( 0, -64 )
 
-[node name="Empty_tile_scene16" parent="Board" instance=ExtResource( 4 )]
-
-[node name="Empty_tile_scene17" parent="Board" instance=ExtResource( 4 )]
-position = Vector2( 0, 64 )
-
-[node name="Empty_tile_scene18" parent="Board" instance=ExtResource( 4 )]
-position = Vector2( 0, 128 )
-
-[node name="Empty_tile_scene19" parent="Board" instance=ExtResource( 4 )]
-position = Vector2( 0, 192 )
-
-[node name="Empty_tile_scene20" parent="Board" instance=ExtResource( 4 )]
+[node name="Empty_Tile5" parent="Board" instance=ExtResource( 4 )]
 position = Vector2( 64, -64 )
 
-[node name="Empty_tile_scene22" parent="Board" instance=ExtResource( 4 )]
-position = Vector2( 64, 64 )
+[node name="Empty_Tile6" parent="Board" instance=ExtResource( 4 )]
+position = Vector2( -192, 0 )
 
-[node name="Empty_tile_scene24" parent="Board" instance=ExtResource( 4 )]
-position = Vector2( 64, 192 )
+[node name="Empty_Tile11" parent="Board" instance=ExtResource( 4 )]
+position = Vector2( -192, 64 )
 
-[node name="Empty_tile_scene9" parent="Board" instance=ExtResource( 4 )]
+[node name="Empty_Tile12" parent="Board" instance=ExtResource( 4 )]
+position = Vector2( -192, 128 )
+
+[node name="Empty_Tile13" parent="Board" instance=ExtResource( 4 )]
 position = Vector2( -192, 192 )
+
+[node name="Empty_Tile14" parent="Board" instance=ExtResource( 4 )]
+position = Vector2( -128, 64 )
+
+[node name="Empty_Tile15" parent="Board" instance=ExtResource( 4 )]
+position = Vector2( -128, 128 )
+
+[node name="Empty_Tile16" parent="Board" instance=ExtResource( 4 )]
+position = Vector2( -128, 192 )
+
+[node name="Empty_Tile17" parent="Board" instance=ExtResource( 4 )]
+position = Vector2( -64, 64 )
+
+[node name="Empty_Tile18" parent="Board" instance=ExtResource( 4 )]
+position = Vector2( -64, 128 )
+
+[node name="Empty_Tile19" parent="Board" instance=ExtResource( 4 )]
+position = Vector2( -64, 192 )
+
+[node name="Empty_Tile20" parent="Board" instance=ExtResource( 4 )]
+position = Vector2( 0, 64 )
+
+[node name="Empty_Tile21" parent="Board" instance=ExtResource( 4 )]
+position = Vector2( 0, 128 )
+
+[node name="Empty_Tile22" parent="Board" instance=ExtResource( 4 )]
+position = Vector2( 0, 192 )
+
+[node name="Empty_Tile24" parent="Board" instance=ExtResource( 4 )]
+position = Vector2( 64, 128 )
+
+[node name="Empty_Tile27" parent="Board" instance=ExtResource( 4 )]
+position = Vector2( 64, 128 )
+
+[node name="Empty_Tile7" parent="Board" instance=ExtResource( 4 )]
+position = Vector2( -128, 0 )
+
+[node name="Empty_Tile8" parent="Board" instance=ExtResource( 4 )]
+position = Vector2( -64, 0 )
+
+[node name="Empty_Tile9" parent="Board" instance=ExtResource( 4 )]
+
+[node name="Empty_Tile10" parent="Board" instance=ExtResource( 4 )]
+position = Vector2( 64, 0 )
 
 [node name="Server_tile" parent="Board" instance=ExtResource( 2 )]
 position = Vector2( -192, -64 )
 
 [node name="Client_tile" parent="Board" instance=ExtResource( 3 )]
-position = Vector2( 64, 0 )
+position = Vector2( 64, 64 )
 
 [node name="Client_tile2" parent="Board" instance=ExtResource( 3 )]
-position = Vector2( 64, 128 )
+position = Vector2( 64, 192 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
@@ -90,16 +94,19 @@ current = true
 [node name="Inventory" parent="." instance=ExtResource( 6 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = -631.0
-margin_top = -355.0
-margin_right = 877.0
-margin_bottom = -90.0
+margin_left = -576.0
+margin_top = -384.0
+margin_right = 932.0
+margin_bottom = -119.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
-margin_left = -115.0
-margin_top = 220.0
-margin_right = 52.0
-margin_bottom = 260.0
+margin_left = -128.0
+margin_top = 320.0
+margin_right = 39.0
+margin_bottom = 360.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="MoneyLabel" type="Label" parent="HBoxContainer"]
 margin_top = 13.0
@@ -115,17 +122,20 @@ margin_bottom = 27.0
 text = "$0"
 
 [node name="Label" type="Label" parent="."]
-margin_left = -137.0
-margin_top = -116.0
-margin_right = 14.0
-margin_bottom = -102.0
+margin_left = -67.0
+margin_top = -145.5
+margin_right = 84.0
+margin_bottom = -131.5
 text = "Switches Route Up First"
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="."]
-margin_left = -310.0
-margin_top = -130.0
-margin_right = -143.0
-margin_bottom = -90.0
+margin_left = -258.0
+margin_top = -158.0
+margin_right = -91.0
+margin_bottom = -118.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="FreeCableLabel" type="Label" parent="HBoxContainer2"]
 margin_top = 13.0

@@ -19,11 +19,11 @@ func sendPacket():
 #func _process(delta):
 #	pass
 
-func _on_Server_Area2D_input_event(viewport, event, shape_idx):
+
+func _on_Area2D_input_event(_viewport, event, _shape_idx):
 	if event is InputEventMouseButton and event.pressed:
-		match event.button_index:
-			BUTTON_LEFT:
-				print("the server tile cannot be modified.")
-			BUTTON_RIGHT:
-				print("the server tile cannot be modified.")
-	pass # Replace with function body.
+			match event.button_index:
+				BUTTON_LEFT:
+					print("the server tile cannot be modified.")
+				BUTTON_RIGHT:
+					print("the server tile cannot be modified.")
