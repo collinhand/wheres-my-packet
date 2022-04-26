@@ -1,0 +1,163 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://Assets/Scripts/StartMenu.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Font/ThaleahFat_TTF.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://Assets/Sprites/Button/Start_Normal.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Sprites/Button/Start_Pressed.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Sprites/Button/Exit_Pressed.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Sprites/Button/Exit_Normal.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Sprites/Icons/icons8-relay-100.png" type="Texture" id=7]
+[ext_resource path="res://Assets/Scenes/StartMenuBackground.gd" type="Script" id=8]
+[ext_resource path="res://Assets/Sprites/Icons/icons8-network-cable-96.png" type="Texture" id=9]
+[ext_resource path="res://Assets/Sprites/Icons/icons8-switch-100.png" type="Texture" id=10]
+[ext_resource path="res://Assets/Sprites/cool-background (1).png" type="Texture" id=11]
+[ext_resource path="res://Assets/Sprites/Icons/icons8-my-computer-64.png" type="Texture" id=12]
+[ext_resource path="res://Assets/Sprites/Icons/icons8-servers-group-100 (1).png" type="Texture" id=13]
+
+[sub_resource type="DynamicFont" id=4]
+size = 120
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 50
+font_data = ExtResource( 2 )
+
+[node name="Menu" type="Control"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -960.0
+margin_top = -540.0
+margin_right = 960.0
+margin_bottom = 540.0
+script = ExtResource( 1 )
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+script = ExtResource( 8 )
+
+[node name="TextureRect" type="TextureRect" parent="ParallaxBackground"]
+margin_right = 1920.0
+margin_bottom = 1080.0
+texture = ExtResource( 11 )
+stretch_mode = 1
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2( 0, 1300 )
+
+[node name="Cable" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2( 109, 137 )
+rotation = -0.803183
+scale = Vector2( 2.07614, 2.46466 )
+texture = ExtResource( 9 )
+
+[node name="Cable2" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2( 1188, 773 )
+rotation = -1.92431
+scale = Vector2( 1.34533, 1.59709 )
+texture = ExtResource( 9 )
+
+[node name="Server" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2( 1857, 27.0001 )
+rotation = 0.557259
+scale = Vector2( 2.87658, 2.7851 )
+texture = ExtResource( 13 )
+
+[node name="Server2" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2( 188, 885 )
+rotation = -1.21267
+scale = Vector2( 1.24849, 1.20878 )
+texture = ExtResource( 13 )
+
+[node name="Switch" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2( 1577, 379 )
+rotation = 0.557259
+scale = Vector2( 1.22314, 1.18424 )
+texture = ExtResource( 10 )
+
+[node name="Switch2" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2( 768, 912 )
+rotation = 1.06351
+scale = Vector2( 1.22314, 1.18424 )
+texture = ExtResource( 10 )
+
+[node name="Relay" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2( 1583, 935 )
+rotation = -0.716172
+scale = Vector2( 1.22314, 1.18424 )
+texture = ExtResource( 7 )
+
+[node name="Relay2" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2( 248, 395 )
+rotation = 0.681053
+scale = Vector2( 0.718413, 0.695565 )
+texture = ExtResource( 7 )
+
+[node name="Client" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2( 385, 698 )
+rotation = -0.214877
+scale = Vector2( 2.86378, 2.89408 )
+texture = ExtResource( 12 )
+
+[node name="Client2" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2( 1107, 209 )
+rotation = 0.881343
+scale = Vector2( 1.92708, 1.94747 )
+texture = ExtResource( 12 )
+
+[node name="Where\'s my Packet" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -458.0
+margin_top = -200.0
+margin_right = 459.0
+margin_bottom = -90.0
+custom_fonts/font = SubResource( 4 )
+text = "Where's my Packet"
+align = 1
+valign = 1
+
+[node name="StartButton" type="TextureButton" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -410.0
+margin_top = -28.0
+margin_right = -210.0
+margin_bottom = 72.0
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 4 )
+expand = true
+
+[node name="ExitButton" type="TextureButton" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 190.0
+margin_top = -28.0
+margin_right = 390.0
+margin_bottom = 72.0
+texture_normal = ExtResource( 6 )
+texture_pressed = ExtResource( 5 )
+expand = true
+
+[node name="By Haafinger" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 623.0
+margin_top = 440.0
+margin_right = 895.0
+margin_bottom = 532.0
+custom_fonts/font = SubResource( 3 )
+text = "By Haafinger"
+align = 2
+valign = 1
+
+[connection signal="pressed" from="StartButton" to="." method="_on_StartButton_pressed"]
+[connection signal="pressed" from="ExitButton" to="." method="_on_ExitButton_pressed"]
