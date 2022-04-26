@@ -30,5 +30,9 @@ func _on_Area2D_input_event(_viewport, event, _shape_idx):
 				else:
 					return
 			BUTTON_RIGHT:
-				self.rotation_degrees += 45
+				if destroyable	:
+					Board.deleteTile(self)
+			BUTTON_MIDDLE:	
+				self.rotation_degrees += 90
+
 	pass # Replace with function body.

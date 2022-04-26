@@ -94,58 +94,9 @@ current = true
 [node name="Inventory" parent="." instance=ExtResource( 6 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = -576.0
-margin_top = -384.0
-margin_right = 932.0
-margin_bottom = -119.0
-
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
-margin_left = -128.0
-margin_top = 320.0
-margin_right = 39.0
-margin_bottom = 360.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="MoneyLabel" type="Label" parent="HBoxContainer"]
-margin_top = 13.0
-margin_right = 87.0
-margin_bottom = 27.0
-text = "Money Spent:"
-
-[node name="SpentLabel" type="Label" parent="HBoxContainer"]
-margin_left = 91.0
-margin_top = 13.0
-margin_right = 107.0
-margin_bottom = 27.0
-text = "$0"
-
-[node name="Label" type="Label" parent="."]
-margin_left = -67.0
-margin_top = -145.5
-margin_right = 84.0
-margin_bottom = -131.5
-text = "Switches Route Up First"
-
-[node name="HBoxContainer2" type="HBoxContainer" parent="."]
-margin_left = -258.0
-margin_top = -158.0
-margin_right = -91.0
-margin_bottom = -118.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="FreeCableLabel" type="Label" parent="HBoxContainer2"]
-margin_top = 13.0
-margin_right = 106.0
-margin_bottom = 27.0
-text = "Free Cables Left:"
-
-[node name="CableNum" type="Label" parent="HBoxContainer2"]
-margin_left = 110.0
-margin_top = 13.0
-margin_right = 118.0
-margin_bottom = 27.0
-text = "3"
+margin_left = -501.159
+margin_top = -367.0
+margin_right = 430.841
+margin_bottom = -120.0
+FREE_CABLE_CNT = 3
+MAX_FREE_CABLES = 3

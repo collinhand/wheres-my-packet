@@ -22,4 +22,14 @@ margin_right = 76.0
 margin_bottom = 70.0
 icon = ExtResource( 1 )
 
+[node name="Switch Route Up First" type="Label" parent="."]
+margin_left = -34.9891
+margin_top = 71.6599
+margin_right = 116.011
+margin_bottom = 85.6599
+text = "Switches Route Up First"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed" binds= [ "Erase" ]]

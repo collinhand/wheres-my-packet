@@ -25,10 +25,10 @@ func _on_Area2D_input_event(_viewport, event, _shape_idx):
 			BUTTON_LEFT:
 				if baseTile:
 					if (Inventory.selectedTile != "NULL"):					
-						Board.placeTile(self.position)
-						queue_free()
+						Board.placeTile(self)
 				else:
 					return
 			BUTTON_RIGHT:
-				print("the switch tile cannot be rotated.")
+				if !baseTile:
+					self.rotation_degrees+=90
 	pass # Replace with function body.
