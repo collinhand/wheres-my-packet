@@ -2,7 +2,8 @@ extends Node2D
 export var destroyable = true
 export var baseTile = true
 export var tile_cost = 0
-export var adjacentTiles = []
+
+var adjacentTiles = []
 var Board 
 var Inventory
 var Counter = 0;
@@ -28,3 +29,8 @@ func _on_Area2D_input_event(_viewport, event, _shape_idx):
 				print("the client tile cannot be modified.")
 	pass # Replace with function body.
 
+
+
+func _on_Area2D_area_entered(area):
+	adjacentTiles.append(area.get_parent())
+	pass # Replace with function body.

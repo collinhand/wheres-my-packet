@@ -81,6 +81,7 @@ position = Vector2( 64, 0 )
 
 [node name="Server_tile" parent="Board" instance=ExtResource( 2 )]
 position = Vector2( -192, -64 )
+PacketsToSend = 4
 
 [node name="Client_tile" parent="Board" instance=ExtResource( 3 )]
 position = Vector2( 64, 64 )

@@ -32,7 +32,10 @@ func placeTile(T):
 		var instance = Cable_tile.instance() 
 		instance.position = T.position
 		add_child(instance)
-		Inventory.MONEY_SPENT +=instance.tile_cost
+		if Inventory.FREE_CABLE_CNT == 0:
+			Inventory.MONEY_SPENT +=instance.tile_cost
+		else:
+			Inventory.FREE_CABLE_CNT -=1
 		Inventory.MoneySpentLabel.text = str(Inventory.MONEY_SPENT) # update GUI with new value
 		Inventory.FreeCableNum.text = str(Inventory.FREE_CABLE_CNT)
 	elif Inventory.selectedTile == "Switch": # if switch
@@ -51,8 +54,13 @@ func deleteTile(tile):
 	var instance = Empty_tile.instance() #replace empty tile back on board
 	instance.position = tile.position
 	add_child(instance)
-	Inventory.MONEY_SPENT-=tile.tile_cost	
-	Inventory.MoneySpentLabel.text = str(Inventory.MONEY_SPENT)				
+	if Inventory.FREE_CABLE_CNT == Inventory.MAX_FREE_CABLES:
+		Inventory.MONEY_SPENT-=tile.tile_cost
+	else:
+		Inventory.FREE_CABLE_CNT +=1
+	
+	Inventory.MoneySpentLabel.text = str(Inventory.MONEY_SPENT)
+	Inventory.FreeCableNum.text = str(Inventory.FREE_CABLE_CNT)				
 	tile.queue_free() # delete tile that was there
 	
 	
