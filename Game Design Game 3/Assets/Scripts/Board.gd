@@ -6,6 +6,9 @@ var Inventory
 var Empty_tile 
 var Cable_tile
 var Switch_tile
+var currentTiles = Array()
+var simStarted = false
+signal _simStarted
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -13,58 +16,61 @@ func _ready():
 	Cable_tile = load("res://Assets/Scenes/Cable_1_tile.tscn")
 	Switch_tile = load("res://Assets/Scenes/Switch_1_tile.tscn")
 	Inventory  = get_parent().get_node("Inventory")
-	getTiles()
-
-var currentTiles = Array()
-#for debuging/testing
-
-
-			
+	getTiles()			
+# function for getting all tiles on the board mainly for debugging
 func getTiles():
 	for i in get_child_count():
 		currentTiles.append(get_child(i))
-
-
-func simulationTick():
 	pass
+
+func instanceTile(tile,pos):
+	var tileInstance = tile.instance()
+	tileInstance.position = pos
+	add_child(tileInstance)
+	return tileInstance
+
+func updateGUI():
+	Inventory.MoneySpentLabel.text = str(Inventory.MONEY_SPENT) # update GUI with new value
+	Inventory.FreeCableNum.text = str(Inventory.FREE_CABLE_CNT)
+# called by a tile to replace the current tile in that location with a new one ex. Empty -> Cable v1
 func placeTile(T): 
+	var tile
+	if simStarted:
+		return
 	if Inventory.selectedTile == "Cable_1":
-		var instance = Cable_tile.instance() 
-		instance.position = T.position
-		add_child(instance)
+		tile = instanceTile(Cable_tile,T.position)
 		if Inventory.FREE_CABLE_CNT == 0:
-			Inventory.MONEY_SPENT +=instance.tile_cost
+			Inventory.MONEY_SPENT +=tile.tile_cost
 		else:
 			Inventory.FREE_CABLE_CNT -=1
-		Inventory.MoneySpentLabel.text = str(Inventory.MONEY_SPENT) # update GUI with new value
-		Inventory.FreeCableNum.text = str(Inventory.FREE_CABLE_CNT)
 	elif Inventory.selectedTile == "Switch": # if switch
-		var instance = Switch_tile.instance()
-		#instance.
-		instance.position = T.position
-		add_child(instance)
-		
-		# add logic here for subtracting cost/ resetting free cables if necessary
-		
-		Inventory.MONEY_SPENT += 3 # take money from players account
-		self.get_parent().get_node("HBoxContainer/SpentLabel").text = str("$") + str(Inventory.MONEY_SPENT) # update GUI with new value
+		tile = instanceTile(Switch_tile,T.position)
+		Inventory.MONEY_SPENT += tile.tile_cost
 	if T.baseTile == true: #delete empty tile from board
 		T.queue_free()
-func deleteTile(tile):
-	var instance = Empty_tile.instance() #replace empty tile back on board
-	instance.position = tile.position
-	add_child(instance)
-	if Inventory.FREE_CABLE_CNT == Inventory.MAX_FREE_CABLES:
-		Inventory.MONEY_SPENT-=tile.tile_cost
-	else:
-		Inventory.FREE_CABLE_CNT +=1
-	
-	Inventory.MoneySpentLabel.text = str(Inventory.MONEY_SPENT)
-	Inventory.FreeCableNum.text = str(Inventory.FREE_CABLE_CNT)				
-	tile.queue_free() # delete tile that was there
-	
-	
- 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+	updateGUI()
+#reverse of place tile deletes currently placed tile and places an empty one back
+func deleteTile(T):
+	var _tile 
+	if simStarted:
+		return
+	if T.destroyable:
+		_tile = instanceTile(Empty_tile,T.position)
+		if T.tile_type == "Cable":		
+			if Inventory.FREE_CABLE_CNT != Inventory.MAX_FREE_CABLES:
+				Inventory.FREE_CABLE_CNT +=1
+			else:
+				Inventory.MONEY_SPENT -=T.tile_cost
+		else:
+			Inventory.MONEY_SPENT-=T.tile_cost
+		if Inventory.MONEY_SPENT <0:
+			Inventory.MONEY_SPENT = 0
+		updateGUI()	
+		T.queue_free() # delete tile that was there
+func _input(_event):
+	if Input.is_key_pressed(KEY_SPACE) and !simStarted:	
+		emit_signal("_simStarted")	
+		print("Sim started")
+		simStarted = true
+	pass	
+

@@ -7,6 +7,9 @@
 [node name="Client_tile" instance=ExtResource( 1 )]
 script = ExtResource( 3 )
 
+[node name="Sprite" parent="Area2D" index="1"]
+texture = ExtResource( 2 )
+
 [node name="PacketLabel" type="Label" parent="Area2D" index="2"]
 modulate = Color( 0, 0, 0, 1 )
 margin_left = 19.0
@@ -15,10 +18,7 @@ margin_right = 29.0
 margin_bottom = 32.0
 text = "2"
 
-[node name="Sprite" parent="Area2D" index="3"]
-texture = ExtResource( 2 )
-
-[node name="Label" parent="Area2D" index="4"]
+[node name="Label" parent="Area2D" index="3"]
 margin_left = 44.0
 margin_top = 25.0
 margin_right = 84.0

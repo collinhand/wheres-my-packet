@@ -3,6 +3,8 @@ export var destroyable = true
 export var baseTile = true
 export var tile_cost = 0
 export var adjacentTiles = []
+
+var tile_type 
 var Board 
 var Inventory 
 
@@ -10,13 +12,6 @@ var Inventory
 func _ready():
 	Board = get_parent()
 	Inventory = get_parent().get_parent().get_node("Inventory")
-
-func getAdjacentTiles():
-	
-	pass
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
 
 
 func _on_Area2D_input_event(_viewport, event, _shape_idx):
@@ -30,5 +25,7 @@ func _on_Area2D_input_event(_viewport, event, _shape_idx):
 				else:
 					return
 			BUTTON_RIGHT:
-				print("the switch cannot be rotated.")
+				Board.deleteTile(self)
+			BUTTON_MIDDLE:
+				self.rotation_degrees+=90
 	pass # Replace with function body.

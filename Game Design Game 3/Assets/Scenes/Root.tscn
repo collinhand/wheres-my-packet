@@ -82,6 +82,7 @@ position = Vector2( 64, 0 )
 [node name="Server_tile" parent="Board" instance=ExtResource( 2 )]
 position = Vector2( -192, -64 )
 PacketsToSend = 4
+activeOutputs = [ "RIGHT", "DOWN" ]
 
 [node name="Client_tile" parent="Board" instance=ExtResource( 3 )]
 position = Vector2( 64, 64 )
@@ -95,9 +96,9 @@ current = true
 [node name="Inventory" parent="." instance=ExtResource( 6 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = -501.159
-margin_top = -367.0
-margin_right = 430.841
-margin_bottom = -120.0
+margin_left = -512.0
+margin_top = -384.0
+margin_right = 420.0
+margin_bottom = -137.0
 FREE_CABLE_CNT = 3
 MAX_FREE_CABLES = 3

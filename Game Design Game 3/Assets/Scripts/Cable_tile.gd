@@ -3,25 +3,96 @@ export var destroyable = true
 export var baseTile = true
 export var tile_cost = 0
 
-var tile_type ="Cable v1"
+var tile_type ="Cable"
+var myPacket = null
 var adjacentTiles = []
 var Board 
 var Inventory 
+var Sprite
+var timer
+var InputDirection
+var OutputDirection
+var rightAngleTexture
+var rightAngleTextureMirror
+var isRightAngle = false
+var mirrored = false
+var simStarted = false
+func makeRightAngle():
+	var adjacentCableCnt=0
+	var adjacentCables = []
+	for tile in adjacentTiles:
+		if tile.tile_type == "Cable":
+			adjacentCableCnt+=1
+			adjacentCables.append(tile)
+	if adjacentCableCnt == 2:
+		if (adjacentCables[0].position.x == self.position.x and adjacentCables[1].position.y == self.position.y) or (adjacentCables[1].position.x == self.position.x and adjacentCables[0].position.y == self.position.y):
+				get_node("Area2D/Sprite").texture = rightAngleTexture
+				isRightAngle = true
+				getInputDirection()
 
+	pass
+# this is terrible code to fix later but it serves its purpose
+func getInputDirection():
+	match self.rotation_degrees :
+		0.0:
+			if !isRightAngle and !mirrored:
+				InputDirection = "LEFT"
+				OutputDirection ="RIGHT"
+			elif isRightAngle and !mirrored:
+				InputDirection = "UP"
+				OutputDirection ="RIGHT"
+			else:
+				InputDirection = "UP"
+				OutputDirection ="LEFT"
+		90.0:
+			if !isRightAngle and !mirrored:
+				InputDirection = "UP"
+				OutputDirection = "DOWN"
+			elif isRightAngle and !mirrored:
+				InputDirection = "RIGHT"
+				OutputDirection ="DOWN"
+			else:
+				InputDirection = "RIGHT"
+				OutputDirection ="UP"
+		180.0:
+			if !isRightAngle and !mirrored:
+				InputDirection = "RIGHT"
+				OutputDirection = "LEFT"
+			elif isRightAngle and !mirrored:
+				InputDirection = "DOWN"
+				OutputDirection ="LEFT"
+			else:
+				InputDirection = "DOWN"
+				OutputDirection ="RIGHT"
+		270.0:
+			if !isRightAngle and !mirrored:
+				InputDirection = "DOWN"
+				OutputDirection = "UP"
+			elif isRightAngle and !mirrored:
+				InputDirection = "LEFT"
+				OutputDirection ="UP"
+			else:
+				InputDirection = "LEFT"
+				OutputDirection ="DOWN"
+	
+func array_clean(arrayOld):
+	var arrayNew = []
+	for i in arrayOld:
+		if is_instance_valid(i):
+			arrayNew.append(i)
+	adjacentTiles=arrayNew
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	rightAngleTexture = load("res://Assets/Sprites/Cable_elbow.png")
+	rightAngleTextureMirror = load("res://Assets/Sprites/Cable_elbow_mirrored.png")
 	Board = get_parent()
+	Board.connect("_simStarted",self,"_on_Board__simStarted")
+	Sprite = get_node("Area2D/Sprite")
 	Inventory = get_parent().get_parent().get_node("Inventory")
-
-func getAdjacentTiles():
-	
-	pass
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
-
-
+	getInputDirection()
 func _on_Area2D_input_event(_viewport, event, _shape_idx):
+	if simStarted:
+		return
 	if event is InputEventMouseButton and event.pressed:
 		match event.button_index:
 			BUTTON_LEFT:
@@ -35,11 +106,22 @@ func _on_Area2D_input_event(_viewport, event, _shape_idx):
 				if destroyable	:
 					Board.deleteTile(self)
 			BUTTON_MIDDLE:	
+				if isRightAngle and !mirrored:
+					Sprite.texture = rightAngleTextureMirror
+					mirrored = true
+				else:
+					Sprite.texture = rightAngleTexture
+					mirrored = false
+			BUTTON_WHEEL_DOWN:
 				self.rotation_degrees += 90
-
-	pass # Replace with function body.
-
-
+				getInputDirection()
+			BUTTON_WHEEL_UP:
+				self.rotation_degrees-= 90
+				getInputDirection()
+# gets adjacent tiles
 func _on_Area2D_area_entered(area):
 	adjacentTiles.append(area.get_parent())
-	pass # Replace with function body.
+	array_clean(adjacentTiles)
+	makeRightAngle()
+func _on_Board__simStarted():
+	simStarted=true
