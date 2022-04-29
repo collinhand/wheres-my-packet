@@ -40,7 +40,7 @@ func checkRightAngle():
 # this is terrible code to fix later but it serves its purpose
 func getInputDirection():
 	var rotation:int = self.rotation_degrees
-	
+	rotation = rotation%360
 	match rotation :
 		0:
 			if !isRightAngle and !mirrored:

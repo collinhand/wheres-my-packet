@@ -38,5 +38,5 @@ func _on_Area2D_area_entered(area):
 	adjacentTiles.append(area.get_parent())
 #starts simulation timer
 func _on_Board__simStarted():
-	print("Client :"+self.name +" start")
+	pass
 

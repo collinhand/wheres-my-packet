@@ -3,7 +3,7 @@ export var destroyable = true
 export var baseTile = true
 export var tile_cost = 0
 export var PacketsToSend =0
-export var Outputs = ["LEFT","RIGHT","UP","DOWN"]
+export var OutputDirection = ["LEFT","RIGHT","UP","DOWN"]
 
 var packet_scene
 var adjacentTiles = []
@@ -41,7 +41,7 @@ func array_clean(arrayOld):
 func sendPacket():
 	if hasPacket:
 		nextOutput = (nextOutput + 1)%4
-		myPacket.nextDir = Outputs[nextOutput]
+		myPacket.nextDir = OutputDirection[nextOutput]
 	elif PacketsToSend != 0 and !hasPacket:		
 		myPacket = packet_scene.instance()		
 		add_child(myPacket)
