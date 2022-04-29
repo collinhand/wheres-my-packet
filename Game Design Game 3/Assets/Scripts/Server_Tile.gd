@@ -3,24 +3,25 @@ export var destroyable = true
 export var baseTile = true
 export var tile_cost = 0
 export var PacketsToSend =0
-export var activeOutputs = ["LEFT","RIGHT","UP","DOWN"]
+export var Outputs = ["LEFT","RIGHT","UP","DOWN"]
 
 var packet_scene
 var adjacentTiles = []
 var myPacket
+var hasPacket = false
 var Board 
 var Inventory
 var Counter = 0;
 var timer = null
 var tile_type = "Server"
-
+var nextOutput =1 
 
 #setup code
 func setUpTimer():
 	timer = Timer.new()
 	add_child(timer)
 	timer.connect("timeout",self,"_on_Timer_timeout")
-	timer.set_wait_time(1.0)
+	timer.set_wait_time(0.5)
 	timer.set_one_shot(false)
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -38,10 +39,13 @@ func array_clean(arrayOld):
 	adjacentTiles=arrayNew
 #unique function for server that spawns packets and sends them to available inputs
 func sendPacket():
-	if PacketsToSend != 0 and myPacket == null:		
-		myPacket = packet_scene.instance()
-		myPacket.firstDir = activeOutputs[PacketsToSend%activeOutputs.size()]
+	if hasPacket:
+		nextOutput = (nextOutput + 1)%4
+		myPacket.nextDir = Outputs[nextOutput]
+	elif PacketsToSend != 0 and !hasPacket:		
+		myPacket = packet_scene.instance()		
 		add_child(myPacket)
+		hasPacket= true
 		print("Packet Sent")
 		PacketsToSend-=1
 	elif PacketsToSend == 0:

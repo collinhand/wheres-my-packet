@@ -82,13 +82,14 @@ position = Vector2( 64, 0 )
 [node name="Server_tile" parent="Board" instance=ExtResource( 2 )]
 position = Vector2( -192, -64 )
 PacketsToSend = 4
-activeOutputs = [ "RIGHT", "DOWN" ]
 
 [node name="Client_tile" parent="Board" instance=ExtResource( 3 )]
 position = Vector2( 64, 64 )
+NeededPackets = 2
 
 [node name="Client_tile2" parent="Board" instance=ExtResource( 3 )]
 position = Vector2( 64, 192 )
+NeededPackets = 2
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true

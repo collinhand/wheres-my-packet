@@ -4,7 +4,7 @@ export var baseTile = true
 export var tile_cost = 0
 
 var tile_type ="Cable"
-var myPacket = null
+var hasPacket = false
 var adjacentTiles = []
 var Board 
 var Inventory 
@@ -12,12 +12,13 @@ var Sprite
 var timer
 var InputDirection
 var OutputDirection
+var regTexture
 var rightAngleTexture
 var rightAngleTextureMirror
 var isRightAngle = false
 var mirrored = false
 var simStarted = false
-func makeRightAngle():
+func checkRightAngle():
 	var adjacentCableCnt=0
 	var adjacentCables = []
 	for tile in adjacentTiles:
@@ -29,12 +30,19 @@ func makeRightAngle():
 				get_node("Area2D/Sprite").texture = rightAngleTexture
 				isRightAngle = true
 				getInputDirection()
+	else:
+		get_node("Area2D/Sprite").texture = regTexture
+		isRightAngle=false
+		getInputDirection()
+	
 
 	pass
 # this is terrible code to fix later but it serves its purpose
 func getInputDirection():
-	match self.rotation_degrees :
-		0.0:
+	var rotation:int = self.rotation_degrees
+	
+	match rotation :
+		0:
 			if !isRightAngle and !mirrored:
 				InputDirection = "LEFT"
 				OutputDirection ="RIGHT"
@@ -44,7 +52,7 @@ func getInputDirection():
 			else:
 				InputDirection = "UP"
 				OutputDirection ="LEFT"
-		90.0:
+		90:
 			if !isRightAngle and !mirrored:
 				InputDirection = "UP"
 				OutputDirection = "DOWN"
@@ -54,7 +62,7 @@ func getInputDirection():
 			else:
 				InputDirection = "RIGHT"
 				OutputDirection ="UP"
-		180.0:
+		180:
 			if !isRightAngle and !mirrored:
 				InputDirection = "RIGHT"
 				OutputDirection = "LEFT"
@@ -64,7 +72,7 @@ func getInputDirection():
 			else:
 				InputDirection = "DOWN"
 				OutputDirection ="RIGHT"
-		270.0:
+		270:
 			if !isRightAngle and !mirrored:
 				InputDirection = "DOWN"
 				OutputDirection = "UP"
@@ -83,6 +91,7 @@ func array_clean(arrayOld):
 	adjacentTiles=arrayNew
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	regTexture = load("res://Assets/Sprites/Cable_1.png")
 	rightAngleTexture = load("res://Assets/Sprites/Cable_elbow.png")
 	rightAngleTextureMirror = load("res://Assets/Sprites/Cable_elbow_mirrored.png")
 	Board = get_parent()
@@ -112,6 +121,7 @@ func _on_Area2D_input_event(_viewport, event, _shape_idx):
 				else:
 					Sprite.texture = rightAngleTexture
 					mirrored = false
+				getInputDirection()
 			BUTTON_WHEEL_DOWN:
 				self.rotation_degrees += 90
 				getInputDirection()
@@ -122,6 +132,6 @@ func _on_Area2D_input_event(_viewport, event, _shape_idx):
 func _on_Area2D_area_entered(area):
 	adjacentTiles.append(area.get_parent())
 	array_clean(adjacentTiles)
-	makeRightAngle()
+	checkRightAngle()
 func _on_Board__simStarted():
 	simStarted=true
