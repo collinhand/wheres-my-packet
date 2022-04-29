@@ -18,6 +18,7 @@ var rightAngleTextureMirror
 var isRightAngle = false
 var mirrored = false
 var simStarted = false
+var rot:int
 func checkRightAngle():
 	var adjacentCableCnt=0
 	var adjacentCables = []
@@ -39,9 +40,9 @@ func checkRightAngle():
 	pass
 # this is terrible code to fix later but it serves its purpose
 func getInputDirection():
-	var rotation:int = self.rotation_degrees
-	rotation = rotation%360
-	match rotation :
+	rot = self.rotation_degrees
+	rot = abs(rot%360)
+	match rot :
 		0:
 			if !isRightAngle and !mirrored:
 				InputDirection = "LEFT"
@@ -54,14 +55,14 @@ func getInputDirection():
 				OutputDirection ="LEFT"
 		90:
 			if !isRightAngle and !mirrored:
-				InputDirection = "UP"
-				OutputDirection = "DOWN"
+				InputDirection = "DOWN"
+				OutputDirection = "UP"
 			elif isRightAngle and !mirrored:
-				InputDirection = "RIGHT"
-				OutputDirection ="DOWN"
-			else:
-				InputDirection = "RIGHT"
+				InputDirection = "LEFT"
 				OutputDirection ="UP"
+			else:
+				InputDirection = "LEFT"
+				OutputDirection ="DOWN"
 		180:
 			if !isRightAngle and !mirrored:
 				InputDirection = "RIGHT"
@@ -74,15 +75,15 @@ func getInputDirection():
 				OutputDirection ="RIGHT"
 		270:
 			if !isRightAngle and !mirrored:
-				InputDirection = "DOWN"
-				OutputDirection = "UP"
+				InputDirection = "UP"
+				OutputDirection = "DOWN"
 			elif isRightAngle and !mirrored:
-				InputDirection = "LEFT"
-				OutputDirection ="UP"
-			else:
-				InputDirection = "LEFT"
+				InputDirection = "RIGHT"
 				OutputDirection ="DOWN"
-	
+			else:
+				InputDirection = "RIGHT"
+				OutputDirection ="UP"
+	print(str(rot)+str(self.InputDirection)+","+str(self.OutputDirection))
 func array_clean(arrayOld):
 	var arrayNew = []
 	for i in arrayOld:
@@ -115,15 +116,20 @@ func _on_Area2D_input_event(_viewport, event, _shape_idx):
 				if destroyable	:
 					Board.deleteTile(self)
 			BUTTON_MIDDLE:	
-				if isRightAngle and !mirrored:
-					Sprite.texture = rightAngleTextureMirror
-					mirrored = true
-				else:
+				if !isRightAngle:
 					Sprite.texture = rightAngleTexture
-					mirrored = false
+					isRightAngle = true
+				else:
+					isRightAngle = false
+					Sprite.texture = regTexture			
 				getInputDirection()
 			BUTTON_WHEEL_DOWN:
-				self.rotation_degrees += 90
+				if !mirrored and isRightAngle:
+					mirrored = true
+					Sprite.texture= rightAngleTextureMirror
+				elif mirrored:
+					mirrored = false
+					Sprite.texture = rightAngleTexture
 				getInputDirection()
 			BUTTON_WHEEL_UP:
 				self.rotation_degrees-= 90
@@ -132,6 +138,5 @@ func _on_Area2D_input_event(_viewport, event, _shape_idx):
 func _on_Area2D_area_entered(area):
 	adjacentTiles.append(area.get_parent())
 	array_clean(adjacentTiles)
-	checkRightAngle()
 func _on_Board__simStarted():
 	simStarted=true

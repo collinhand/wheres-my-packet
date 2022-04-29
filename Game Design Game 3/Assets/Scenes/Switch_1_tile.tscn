@@ -7,6 +7,7 @@
 [node name="Switch_1_tile" instance=ExtResource( 1 )]
 script = ExtResource( 3 )
 baseTile = false
+tile_cost = 3
 
 [node name="Sprite" parent="Area2D" index="1"]
 texture = ExtResource( 2 )

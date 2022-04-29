@@ -24,9 +24,6 @@ func _ready():
 	Inventory = get_parent().get_parent().get_node("Inventory")
 	Board.connect("_simStarted",self,"_on_Board__simStarted")
 
-func _process(_delta):
-	
-	pass
 	
 func getInputDirection():
 	var rotation:int = self.rotation_degrees
@@ -64,9 +61,9 @@ func _on_Area2D_input_event(_viewport, event, _shape_idx):
 				else:
 					return
 			BUTTON_RIGHT:
-				Board.deleteTile(self)
-			BUTTON_WHEEL_DOWN:
-				self.rotation_degrees += 90
+				if destroyable	:
+					Board.deleteTile(self)
+			BUTTON_MIDDLE:	
 				getInputDirection()
 			BUTTON_WHEEL_UP:
 				self.rotation_degrees-= 90
