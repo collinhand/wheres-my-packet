@@ -44,23 +44,17 @@ position = Vector2( -64, 64 )
 position = Vector2( 64, 0 )
 
 [node name="Server_tile" parent="Board" instance=ExtResource( 2 )]
-position = Vector2( -130, 127 )
-PacketsToSend = 6
+position = Vector2( -192, -64 )
+PacketsToSend = 10
 
 [node name="Client_tile" parent="Board" instance=ExtResource( 3 )]
-position = Vector2( 64, 127 )
+position = Vector2( 64, -64 )
 rotation = -0.00285949
-NeededPackets = 3
-
-[node name="Client_tile3" parent="Board" instance=ExtResource( 3 )]
-position = Vector2( 65, -65 )
-NeededPackets = 1
-OutputDirection = [ "RIGHT" ]
-InputDirection = [ "UP", "DOWN", "LEFT", "RIGHT" ]
+NeededPackets = 5
 
 [node name="Client_tile2" parent="Board" instance=ExtResource( 3 )]
-position = Vector2( -192, -64 )
-NeededPackets = 2
+position = Vector2( -64, 0 )
+NeededPackets = 5
 OutputDirection = [ "RIGHT" ]
 InputDirection = [ "UP", "DOWN", "LEFT", "RIGHT" ]
 
