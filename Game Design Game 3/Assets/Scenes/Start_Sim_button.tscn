@@ -14,3 +14,5 @@ align = 1
 margin_right = 83.0
 margin_bottom = 70.0
 icon = null
+
+[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
