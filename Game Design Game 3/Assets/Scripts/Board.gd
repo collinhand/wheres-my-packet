@@ -28,7 +28,14 @@ func instanceTile(tile,pos):
 	tileInstance.position = pos
 	add_child(tileInstance)
 	return tileInstance
-
+func _process(_delta):
+	var clientsReady =0
+	for i in get_tree().get_nodes_in_group("Clients"):
+		if i.NeededPackets == 0:
+			clientsReady +=1
+			#put Game won screen here and next level button
+	if clientsReady == get_tree().get_nodes_in_group("Clients").size():
+		print("Game Won")
 func updateGUI():
 	Inventory.MoneySpentLabel.text = str(Inventory.MONEY_SPENT) # update GUI with new value
 	Inventory.FreeCableNum.text = str(Inventory.FREE_CABLE_CNT)
