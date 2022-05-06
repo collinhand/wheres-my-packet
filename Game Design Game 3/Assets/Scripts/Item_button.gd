@@ -6,6 +6,6 @@ func _ready():
 	
 func _on_Button_pressed(extra_arg_0):
 	InventoryScript.selectedTile = str(extra_arg_0)
-	print(InventoryScript.selectedTile)
+	#print(InventoryScript.selectedTile)
 
 
