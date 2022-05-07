@@ -15,7 +15,7 @@ var Counter = 0;
 var timer = null
 var tile_type = "Server"
 var nextOutput =1 
-
+var NumPacketsLabel
 #setup code
 func setUpTimer():
 	timer = Timer.new()
@@ -28,6 +28,7 @@ func _ready():
 	Board = get_parent()
 	Inventory = get_parent().get_parent().get_node("Inventory")
 	packet_scene = load("res://Assets/Scenes/Packet.tscn")
+	NumPacketsLabel = get_node("Area2D/Label")
 	Board.connect("_simStarted",self,"_on_Board__simStarted")
 	setUpTimer()
 #cleans array of adjacent tiles after a tile is deleted or placed
@@ -48,6 +49,7 @@ func sendPacket():
 		hasPacket= true
 		print("Packet Sent")
 		PacketsToSend-=1
+		NumPacketsLabel.text = str(PacketsToSend)
 	elif PacketsToSend == 0:
 		timer.stop()
 	pass
