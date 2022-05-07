@@ -13,9 +13,6 @@ margin_top = -23.7841
 margin_right = -10.7029
 margin_bottom = -23.7842
 script = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Cable_1_button" parent="." instance=ExtResource( 1 )]
 position = Vector2( 320, 64 )

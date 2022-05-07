@@ -25,6 +25,8 @@ func _ready():
 	NeededPacketsLabel = get_node("Area2D/PacketLabel")
 	Inventory = get_parent().get_parent().get_node("Inventory")
 	Board.connect("_simStarted",self,"_on_Board__simStarted")
+	
+	get_node("Area2D/PacketLabel").text = str(NeededPackets)
 # when tile is clicked 
 func _on_Area2D_input_event(_viewport, event, _shape_idx):
 	if event is InputEventMouseButton and event.pressed:

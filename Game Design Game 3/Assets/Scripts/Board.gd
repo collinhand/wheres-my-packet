@@ -9,7 +9,6 @@ var Switch_tile
 var currentTiles = Array()
 var simStarted = false
 signal _simStarted
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	Empty_tile = load("res://Assets/Scenes/Empty_Tile.tscn")
@@ -36,6 +35,8 @@ func _process(_delta):
 			#put Game won screen here and next level button
 	if clientsReady == get_tree().get_nodes_in_group("Clients").size():
 		print("Game Won")
+		get_tree().change_scene("res://Assets/Scenes/Win Screen.tscn")
+		
 func updateGUI():
 	Inventory.MoneySpentLabel.text = str(Inventory.MONEY_SPENT) # update GUI with new value
 	Inventory.FreeCableNum.text = str(Inventory.FREE_CABLE_CNT)
@@ -79,5 +80,15 @@ func _input(_event):
 		emit_signal("_simStarted")	
 		print("Sim started")
 		simStarted = true
-	pass	
+		
+	# instant win for debugging
+	if Input.is_key_pressed(KEY_ENTER):
+		print("Game Won")
+		get_tree().change_scene("res://Assets/Scenes/Win Screen.tscn")
+		
+	if Input.is_key_pressed(KEY_BACKSPACE):
+		print("Resetting level")
+		get_tree().change_scene("res://Assets/Scenes/level" + str(Global.currentLevel) + ".tscn")
+	pass
+
 

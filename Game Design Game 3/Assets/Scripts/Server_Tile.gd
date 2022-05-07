@@ -31,6 +31,9 @@ func _ready():
 	NumPacketsLabel = get_node("Area2D/Label")
 	Board.connect("_simStarted",self,"_on_Board__simStarted")
 	setUpTimer()
+	
+	# set packet label
+	get_node("Area2D/Label").text = str(PacketsToSend)
 #cleans array of adjacent tiles after a tile is deleted or placed
 func array_clean(arrayOld):
 	var arrayNew = []
