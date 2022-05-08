@@ -23,7 +23,7 @@ func _ready():
 	Board = get_parent()
 	Inventory = get_parent().get_parent().get_node("Inventory")
 	Board.connect("_simStarted",self,"_on_Board__simStarted")
-
+	
 	
 func getInputDirection():
 	var rotation:int = self.rotation_degrees

@@ -9,7 +9,7 @@ func setUpTimer():
 	timer = Timer.new()
 	add_child(timer)
 	timer.connect("timeout",self,"_on_Timer_timeout")
-	timer.set_wait_time(1.0)
+	timer.set_wait_time(0.5)
 	timer.set_one_shot(false)
 func _ready():
 	curTile = get_parent()

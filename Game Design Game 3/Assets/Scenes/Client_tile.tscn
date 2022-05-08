@@ -17,9 +17,6 @@ margin_top = 18.0
 margin_right = 29.0
 margin_bottom = 32.0
 text = "2"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Label" parent="Area2D" index="3"]
 margin_left = 44.0

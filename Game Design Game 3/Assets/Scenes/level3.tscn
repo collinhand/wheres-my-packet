@@ -1,11 +1,15 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Assets/Scenes/Board.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/Scenes/Server_tile.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Assets/Scenes/Client_tile.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Assets/Scenes/Empty_Tile.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Assets/Scenes/Win Screen.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Assets/Sprites/Inventory.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Assets/Font/ThaleahFat_TTF.ttf" type="DynamicFontData" id=7]
+
+[sub_resource type="DynamicFont" id=1]
+size = 120
+font_data = ExtResource( 7 )
 
 [node name="Root" type="Node2D"]
 position = Vector2( 0, 128 )
@@ -27,10 +31,10 @@ position = Vector2( 64, -64 )
 [node name="Empty_Tile6" parent="Board" instance=ExtResource( 4 )]
 position = Vector2( -192, 0 )
 
-[node name="Empty_Tile11" parent="Board" instance=ExtResource( 4 )]
+[node name="Empty_Tile12" parent="Board" instance=ExtResource( 4 )]
 position = Vector2( -192, 64 )
 
-[node name="Empty_Tile12" parent="Board" instance=ExtResource( 4 )]
+[node name="Empty_Tile23" parent="Board" instance=ExtResource( 4 )]
 position = Vector2( -192, 128 )
 
 [node name="Empty_Tile13" parent="Board" instance=ExtResource( 4 )]
@@ -61,37 +65,33 @@ position = Vector2( 0, 64 )
 position = Vector2( 0, 128 )
 
 [node name="Empty_Tile22" parent="Board" instance=ExtResource( 4 )]
-position = Vector2( 0, 192 )
+position = Vector2( 64, 192 )
 
 [node name="Empty_Tile24" parent="Board" instance=ExtResource( 4 )]
 position = Vector2( 64, 128 )
-
-[node name="Empty_Tile7" parent="Board" instance=ExtResource( 4 )]
-position = Vector2( -128, 0 )
 
 [node name="Empty_Tile8" parent="Board" instance=ExtResource( 4 )]
 position = Vector2( -64, 0 )
 
 [node name="Empty_Tile9" parent="Board" instance=ExtResource( 4 )]
 
+[node name="Empty_Tile11" parent="Board" instance=ExtResource( 4 )]
+position = Vector2( 0, 192 )
+
 [node name="Empty_Tile10" parent="Board" instance=ExtResource( 4 )]
-position = Vector2( 64, 0 )
+position = Vector2( 64, 64 )
 
 [node name="Server_tile" parent="Board" instance=ExtResource( 2 )]
 position = Vector2( -192, -64 )
-PacketsToSend = 4
+PacketsToSend = 6
 
-[node name="Client_tile" parent="Board" groups=[
-"Clients",
-] instance=ExtResource( 3 )]
-position = Vector2( 64, 64 )
-NeededPackets = 2
+[node name="Client_tile" parent="Board" groups=["Clients"] instance=ExtResource( 3 )]
+position = Vector2( 64, 0 )
+NeededPackets = 3
 
-[node name="Client_tile2" parent="Board" groups=[
-"Clients",
-] instance=ExtResource( 3 )]
-position = Vector2( 64, 192 )
-NeededPackets = 2
+[node name="Client_tile2" parent="Board" groups=["Clients"] instance=ExtResource( 3 )]
+position = Vector2( -128, 0 )
+NeededPackets = 3
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
@@ -99,16 +99,23 @@ current = true
 [node name="Inventory" parent="." instance=ExtResource( 6 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = -512.0
-margin_top = -384.0
-margin_right = 420.0
-margin_bottom = -137.0
+margin_left = -591.0
+margin_top = -360.0
+margin_right = 341.0
+margin_bottom = -113.0
 FREE_CABLE_CNT = 3
 MAX_FREE_CABLES = 3
 
-[node name="Win Screen" parent="." instance=ExtResource( 5 )]
-visible = false
-margin_left = -256.0
-margin_top = -64.0
-margin_right = 128.0
-margin_bottom = 256.0
+[node name="lvl3" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -518.0
+margin_top = 214.0
+margin_right = 399.0
+margin_bottom = 324.0
+custom_fonts/font = SubResource( 1 )
+text = "Level 3"
+align = 1
+valign = 1
