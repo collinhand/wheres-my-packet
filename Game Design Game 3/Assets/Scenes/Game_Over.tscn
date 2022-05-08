@@ -1,0 +1,167 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Assets/Font/ThaleahFat_TTF.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Assets/Sprites/reload-icon-white.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Scripts/Game_Over.gd" type="Script" id=3]
+[ext_resource path="res://Assets/Sprites/power_icon.png" type="Texture" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 120
+font_data = ExtResource( 1 )
+
+[node name="Game Over" type="Control"]
+margin_left = -125.0
+margin_top = -89.0
+margin_right = 259.0
+margin_bottom = 103.0
+script = ExtResource( 3 )
+
+[node name="Panel" type="Panel" parent="."]
+show_behind_parent = true
+margin_left = 912.0
+margin_top = 441.0
+margin_right = 1296.0
+margin_bottom = 761.0
+
+[node name="exit_retry_container" type="HBoxContainer" parent="Panel"]
+margin_left = 15.0
+margin_top = 155.0
+margin_right = 372.0
+margin_bottom = 305.0
+
+[node name="retry_lvl_button" type="Button" parent="Panel/exit_retry_container"]
+margin_right = 176.0
+margin_bottom = 150.0
+rect_min_size = Vector2( 150, 150 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="retry_icon" type="Sprite" parent="Panel/exit_retry_container/retry_lvl_button"]
+position = Vector2( 86, 78 )
+scale = Vector2( 0.132166, 0.132166 )
+texture = ExtResource( 2 )
+flip_h = true
+
+[node name="quit_button" type="Button" parent="Panel/exit_retry_container"]
+margin_left = 180.0
+margin_right = 357.0
+margin_bottom = 150.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="quit_icon" type="Sprite" parent="Panel/exit_retry_container/quit_button"]
+position = Vector2( 86, 78 )
+scale = Vector2( 0.190336, 0.190336 )
+texture = ExtResource( 4 )
+
+[node name="lvl1spent" type="Label" parent="Panel"]
+margin_left = 11.0
+margin_top = 2.0
+margin_right = 1214.0
+margin_bottom = 112.0
+rect_scale = Vector2( 0.3, 0.3 )
+custom_fonts/font = SubResource( 1 )
+text = "Level 1: $-1"
+align = 1
+valign = 1
+
+[node name="lvl2spent" type="Label" parent="Panel"]
+margin_left = 11.0
+margin_top = 26.0
+margin_right = 1214.0
+margin_bottom = 136.0
+rect_scale = Vector2( 0.3, 0.3 )
+custom_fonts/font = SubResource( 1 )
+text = "Level 2: $-1"
+align = 1
+valign = 1
+
+[node name="lvl3spent" type="Label" parent="Panel"]
+margin_left = 11.0
+margin_top = 49.0
+margin_right = 1214.0
+margin_bottom = 159.0
+rect_scale = Vector2( 0.3, 0.3 )
+custom_fonts/font = SubResource( 1 )
+text = "Level 3: $-1"
+align = 1
+valign = 1
+
+[node name="lvl4spent" type="Label" parent="Panel"]
+margin_left = 11.0
+margin_top = 74.0
+margin_right = 1214.0
+margin_bottom = 184.0
+rect_scale = Vector2( 0.3, 0.3 )
+custom_fonts/font = SubResource( 1 )
+text = "Level 4: $-1"
+align = 1
+valign = 1
+
+[node name="lvl5spent" type="Label" parent="Panel"]
+margin_left = 11.0
+margin_top = 98.0
+margin_right = 1214.0
+margin_bottom = 208.0
+rect_scale = Vector2( 0.3, 0.3 )
+custom_fonts/font = SubResource( 1 )
+text = "Level 5: $-1"
+align = 1
+valign = 1
+
+[node name="lvl6spent" type="Label" parent="Panel"]
+margin_left = 11.0
+margin_top = 122.0
+margin_right = 1214.0
+margin_bottom = 232.0
+rect_scale = Vector2( 0.3, 0.3 )
+custom_fonts/font = SubResource( 1 )
+text = "Level 6: $-1"
+align = 1
+valign = 1
+
+[node name="game_over" type="Label" parent="Panel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -465.0
+margin_top = -259.0
+margin_right = 452.0
+margin_bottom = -149.0
+custom_fonts/font = SubResource( 1 )
+text = "GAME OVER!"
+align = 1
+valign = 1
+
+[node name="total_score_label" type="Label" parent="Panel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -524.0
+margin_top = 167.0
+margin_right = 529.0
+margin_bottom = 277.0
+custom_fonts/font = SubResource( 1 )
+text = "YOUR TOTAL SCORE IS:"
+align = 1
+valign = 1
+
+[node name="final_score" type="Label" parent="Panel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -784.0
+margin_top = 238.0
+margin_right = 269.0
+margin_bottom = 348.0
+rect_scale = Vector2( 1.5, 1.5 )
+custom_fonts/font = SubResource( 1 )
+text = "$-1"
+align = 1
+valign = 1
+
+[connection signal="pressed" from="Panel/exit_retry_container/retry_lvl_button" to="." method="retry_pressed"]
+[connection signal="pressed" from="Panel/exit_retry_container/quit_button" to="." method="quit_pressed"]

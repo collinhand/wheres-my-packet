@@ -34,6 +34,11 @@ func _ready():
 	
 	# set packet label
 	get_node("Area2D/Label").text = str(PacketsToSend)
+	
+	# set output colors
+	for element in OutputDirection:
+		self.get_node(str(element) + "_marker").color = Color( 1, 0.27, 0, 1 )
+
 #cleans array of adjacent tiles after a tile is deleted or placed
 func array_clean(arrayOld):
 	var arrayNew = []

@@ -32,14 +32,26 @@ func _process(_delta):
 	for i in get_tree().get_nodes_in_group("Clients"):
 		if i.NeededPackets == 0:
 			clientsReady +=1
-			#put Game won screen here and next level button
+			
 	if clientsReady == get_tree().get_nodes_in_group("Clients").size():
-		print("Game Won")
+		print("Game Won, player spent " + str(Inventory.MONEY_SPENT))
+		
+		# save then reset money spent and cable count
+		Global.levelScores[Global.currentLevel] = Inventory.MONEY_SPENT
+		Inventory.MONEY_SPENT = 0
+		Inventory.FREE_CABLE_CNT = 0
+		
+		# show win screen
 		get_tree().change_scene("res://Assets/Scenes/Win Screen.tscn")
 		
 func updateGUI():
-	Inventory.MoneySpentLabel.text = str(Inventory.MONEY_SPENT) # update GUI with new value
+	Inventory.MoneySpentLabel.text = "$" + str(Inventory.MONEY_SPENT) # update GUI with new value
 	Inventory.FreeCableNum.text = str(Inventory.FREE_CABLE_CNT)
+	
+	if Inventory.FREE_CABLE_CNT <= 0:
+		Inventory.CablePrice.text = "$1"
+	else:
+		Inventory.CablePrice.text = "$0"
 # called by a tile to replace the current tile in that location with a new one ex. Empty -> Cable v1
 func placeTile(T): 
 	var tile
@@ -85,6 +97,10 @@ func _input(_event):
 	if Input.is_key_pressed(KEY_ENTER):
 		print("Game Won")
 		get_tree().change_scene("res://Assets/Scenes/Win Screen.tscn")
+		
+		# reset money spent and cable count
+		Inventory.MONEY_SPENT = 0
+		Inventory.FREE_CABLE_CNT = 0
 		
 	if Input.is_key_pressed(KEY_BACKSPACE):
 		print("Resetting level")

@@ -11,3 +11,30 @@ tile_cost = 3
 
 [node name="Sprite" parent="Area2D" index="1"]
 texture = ExtResource( 2 )
+
+[node name="LEFT_marker" type="Polygon2D" parent="." index="1"]
+position = Vector2( -33, -281 )
+rotation = 1.5708
+scale = Vector2( 1.92793, 0.269576 )
+color = Color( 0.129412, 0.588235, 0.74902, 1 )
+polygon = PoolVector2Array( 162, -7, 129, -7, 131, -3, 134, -1, 139, 1, 144, 2, 149, 3, 154, 1, 157, -1, 160, -4 )
+
+[node name="RIGHT_marker" type="Polygon2D" parent="." index="2"]
+position = Vector2( 33, 281 )
+rotation = -1.5708
+scale = Vector2( 1.92793, 0.269576 )
+color = Color( 0.129412, 0.588235, 0.74902, 1 )
+polygon = PoolVector2Array( 162, -7, 129, -7, 131, -3, 134, -1, 139, 1, 144, 2, 149, 3, 154, 1, 157, -1, 160, -4 )
+
+[node name="UP_marker" type="Polygon2D" parent="." index="3"]
+position = Vector2( 281, -33 )
+rotation = -3.14159
+scale = Vector2( 1.92793, 0.269576 )
+color = Color( 0.129412, 0.588235, 0.74902, 1 )
+polygon = PoolVector2Array( 162, -7, 129, -7, 131, -3, 134, -1, 139, 1, 144, 2, 149, 3, 154, 1, 157, -1, 160, -4 )
+
+[node name="DOWN_marker" type="Polygon2D" parent="." index="4"]
+position = Vector2( -280, 33 )
+scale = Vector2( 1.92793, 0.269576 )
+color = Color( 0.129412, 0.588235, 0.74902, 1 )
+polygon = PoolVector2Array( 162, -7, 129, -7, 131, -3, 134, -1, 139, 1, 144, 2, 149, 3, 154, 1, 157, -1, 160, -4 )
