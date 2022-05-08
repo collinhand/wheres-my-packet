@@ -24,6 +24,10 @@ func _ready():
 	Inventory = get_parent().get_parent().get_node("Inventory")
 	Board.connect("_simStarted",self,"_on_Board__simStarted")
 	
+	for element in Outputs:
+		self.get_node(str(element) + "_marker").color = Color( 1, 0.27, 0, 1 )
+	for element in Inputs:
+		self.get_node(str(element) + "_marker").color = Color( 0.25, 0.41, 0.88, 1 )
 	
 func getInputDirection():
 	var rotation:int = self.rotation_degrees

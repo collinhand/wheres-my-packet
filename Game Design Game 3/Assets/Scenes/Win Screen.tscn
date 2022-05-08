@@ -76,11 +76,26 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -465.0
-margin_top = -267.0
+margin_top = -307.0
 margin_right = 452.0
-margin_bottom = -157.0
+margin_bottom = -197.0
 custom_fonts/font = SubResource( 1 )
 text = "Level Passed!"
+align = 1
+valign = 1
+
+[node name="spent" type="Label" parent="Panel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -230.0
+margin_top = -215.0
+margin_right = 687.0
+margin_bottom = -105.0
+rect_scale = Vector2( 0.5, 0.5 )
+custom_fonts/font = SubResource( 1 )
+text = "YOU SPENT $7"
 align = 1
 valign = 1
 

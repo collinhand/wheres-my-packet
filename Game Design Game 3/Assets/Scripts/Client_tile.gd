@@ -27,6 +27,12 @@ func _ready():
 	Board.connect("_simStarted",self,"_on_Board__simStarted")
 	
 	get_node("Area2D/PacketLabel").text = str(NeededPackets)
+	# set inputs/ output colors
+	for element in OutputDirection:
+		self.get_node(str(element) + "_marker").color = Color( 1, 0.27, 0, 1 )
+	for element in InputDirection:
+		self.get_node(str(element) + "_marker").color = Color( 0.25, 0.41, 0.88, 1 )
+		
 # when tile is clicked 
 func _on_Area2D_input_event(_viewport, event, _shape_idx):
 	if event is InputEventMouseButton and event.pressed:
