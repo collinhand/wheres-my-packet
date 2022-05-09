@@ -38,7 +38,7 @@ func next_lvl_pressed():
 	print("Set current level to " + str(Global.currentLevel) + ". Loading level " + str(Global.currentLevel) + ".")
 	get_tree().change_scene("res://Assets/Scenes/level" + str(Global.currentLevel) + ".tscn")
 	
-	if Global.currentLevel > 4: # if no more levels, load win screen
+	if Global.currentLevel > 6: # if no more levels, load win screen
 		print("Game over. Loading final win screen.")
 		get_tree().change_scene("res://Assets/Scenes/Game_Over.tscn")
 	pass # Replace with function body.
