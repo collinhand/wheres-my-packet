@@ -134,6 +134,9 @@ margin_bottom = 72.0
 texture_normal = ExtResource( 3 )
 texture_pressed = ExtResource( 4 )
 expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="ExitButton" type="TextureButton" parent="."]
 anchor_left = 0.5
