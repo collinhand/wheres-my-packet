@@ -27,8 +27,10 @@ margin_bottom = 118.0
 rect_scale = Vector2( 0.12, 0.12 )
 custom_fonts/font = SubResource( 1 )
 text = "2"
+
 align = 1
 valign = 1
+
 
 [node name="Label" parent="Area2D" index="3"]
 margin_left = 44.0
