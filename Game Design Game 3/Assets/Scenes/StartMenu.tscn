@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Assets/Scripts/StartMenu.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Font/ThaleahFat_TTF.ttf" type="DynamicFontData" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://Assets/Sprites/cool-background (1).png" type="Texture" id=11]
 [ext_resource path="res://Assets/Sprites/Icons/icons8-my-computer-64.png" type="Texture" id=12]
 [ext_resource path="res://Assets/Sprites/Icons/icons8-servers-group-100 (1).png" type="Texture" id=13]
+[ext_resource path="res://Assets/Sounds/Fluffing-a-Duck.mp3" type="AudioStream" id=14]
 
 [sub_resource type="DynamicFont" id=1]
 size = 120
@@ -161,6 +162,10 @@ custom_fonts/font = SubResource( 2 )
 text = "By Haafinger"
 align = 2
 valign = 1
+
+[node name="FluffingADuck" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 14 )
+pitch_scale = 1.5
 
 [connection signal="pressed" from="StartButton" to="." method="_on_StartButton_pressed"]
 [connection signal="pressed" from="ExitButton" to="." method="_on_ExitButton_pressed"]
