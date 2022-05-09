@@ -26,7 +26,7 @@ func moveToNextTile(nextTile):
 			nextDir = nextTile.OutputDirection[0]
 			nextTile.myPacket = self			
 		elif nextTile.tile_type =="Switch":
-			nextDir = nextTile.nextOutput
+			nextDir = nextTile.curOutput
 		else:
 			nextDir = nextTile.OutputDirection
 func _on_Timer_timeout():

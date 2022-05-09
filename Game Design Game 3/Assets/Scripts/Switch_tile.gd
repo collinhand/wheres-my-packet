@@ -10,7 +10,8 @@ var Inventory
 var hasPacket = false
 var tile_type = "Switch"
 var j = 0
-var nextOutput = Outputs[j]
+var curOutput = Outputs[j]
+var prevOutput = curOutput
 var timer
 func setUpTimer():
 	timer = Timer.new()
@@ -40,13 +41,19 @@ func getInputDirection():
 			Inputs = ["UP","DOWN"]
 			Outputs= ["LEFT","RIGHT"]
 			pass
-	nextOutput = Outputs[j]	
+	curOutput = Outputs[j]	
 func _on_Timer_timeout():
-	if !hasPacket :
-			j = (j+1)%2
-			nextOutput = Outputs[j]
+	if prevOutput == curOutput:
+		curOutput = Outputs[(j+1)%2]
 	else:
-		nextOutput = Outputs[0]
+		prevOutput = curOutput
+		curOutput = Outputs[j]
+		
+#	if !hasPacket :
+#			j = (j+1)%2
+#			nextOutput = Outputs[j]
+#	else:
+#		nextOutput = Outputs[0]
 
 #when the simulation is started start the servers timer
 func _on_Board__simStarted():
