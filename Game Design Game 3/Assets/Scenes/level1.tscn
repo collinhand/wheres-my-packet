@@ -2,8 +2,12 @@
 
 [ext_resource path="res://Assets/Scenes/Empty_Tile.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/Scenes/Client_tile.tscn" type="PackedScene" id=2]
+
 [ext_resource path="res://Assets/Sounds/button_click.mp3" type="AudioStream" id=3]
 [ext_resource path="res://Assets/Sprites/Inventory.tscn" type="PackedScene" id=4]
+
+[ext_resource path="res://Assets/Scenes/Instructions.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Assets/Scenes/Inventory.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Assets/Scenes/Board.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Assets/Scenes/Server_tile.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Assets/Font/ThaleahFat_TTF.ttf" type="DynamicFontData" id=7]
@@ -149,6 +153,16 @@ align = 1
 valign = 1
 
 [node name="Camera2D" type="Camera2D" parent="."]
-offset = Vector2( 80, 100 )
+offset = Vector2( -55, 100 )
 current = true
 zoom = Vector2( 0.5, 0.5 )
+
+[node name="Control" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="Inventory" parent="Control" instance=ExtResource( 3 )]
+margin_left = -577.0
+margin_top = -152.0
+margin_right = -617.0
+margin_bottom = -192.0

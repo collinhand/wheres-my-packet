@@ -1,0 +1,45 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Assets/Scripts/Inventory.gd" type="Script" id=2]
+[ext_resource path="res://Assets/Font/ThaleahFat_TTF.ttf" type="DynamicFontData" id=3]
+
+[sub_resource type="DynamicFont" id=2]
+size = 120
+font_data = ExtResource( 3 )
+
+[node name="Inventory" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -174.0
+margin_top = -99.0
+margin_right = -1742.0
+margin_bottom = -990.0
+script = ExtResource( 2 )
+
+[node name="Panel2" type="Panel" parent="."]
+margin_left = 55.0
+margin_top = 36.0
+margin_right = 308.0
+margin_bottom = 392.0
+
+[node name="instructions" type="Label" parent="Panel2"]
+margin_left = 10.0
+margin_right = 483.0
+margin_bottom = 110.0
+rect_scale = Vector2( 0.5, 0.5 )
+custom_fonts/font = SubResource( 2 )
+text = "WELCOME!"
+align = 1
+valign = 1
+
+[node name="space" type="Label" parent="Panel2"]
+margin_left = 10.0
+margin_top = 56.0
+margin_right = 1460.0
+margin_bottom = 637.0
+rect_scale = Vector2( 0.16, 0.16 )
+custom_fonts/font = SubResource( 2 )
+text = "COMPLETE THE LEVEL IN THE CHEAPEST WAY POSSIBLE TO ACHIEVE THE HIGHEST SCORE.
+
+YOU'LL NOTICE SOME NUMBERS ON THE CLIENT AND SERVER TILES. THIS IS HOW MANY PACKETS THEY HAVE TO RECEIVE OR SEND, RESPECTIVELY. YOU CAN USE CABLES AND SWITCHES TO GET THE PACKETS WHERE THEY NEED TO BE. ONCE ALL THOSE NUMBERS REACH 0, YOU'LL PASS THE LEVEL. GOOD LUCK, TECHNICIAN!"
+autowrap = true
