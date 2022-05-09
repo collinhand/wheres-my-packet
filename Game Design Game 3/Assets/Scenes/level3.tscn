@@ -4,8 +4,9 @@
 [ext_resource path="res://Assets/Scenes/Server_tile.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Assets/Scenes/Client_tile.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Assets/Scenes/Empty_Tile.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Assets/Sprites/Inventory.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Assets/Scenes/Inventory.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Assets/Font/ThaleahFat_TTF.ttf" type="DynamicFontData" id=7]
+
 
 [sub_resource type="DynamicFont" id=1]
 size = 120

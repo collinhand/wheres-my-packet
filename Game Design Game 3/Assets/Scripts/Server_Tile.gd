@@ -28,12 +28,12 @@ func _ready():
 	Board = get_parent()
 	Inventory = get_parent().get_parent().get_node("Inventory")
 	packet_scene = load("res://Assets/Scenes/Packet.tscn")
-	NumPacketsLabel = get_node("Area2D/Label")
+	NumPacketsLabel = get_node("Area2D/Label2")
 	Board.connect("_simStarted",self,"_on_Board__simStarted")
 	setUpTimer()
 	
 	# set packet label
-	get_node("Area2D/Label").text = str(PacketsToSend)
+	get_node("Area2D/Label2").text = str(PacketsToSend)
 	
 	# set output colors
 	for element in OutputDirection:

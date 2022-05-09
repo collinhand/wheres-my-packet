@@ -24,9 +24,9 @@ script = ExtResource( 2 )
 
 [node name="Panel" type="Panel" parent="."]
 margin_left = 48.0
-margin_top = 8.0
+margin_top = -21.0
 margin_right = 301.0
-margin_bottom = 186.0
+margin_bottom = 157.0
 
 [node name="Inventory" type="Label" parent="Panel"]
 margin_left = 4.0
@@ -72,9 +72,9 @@ align = 1
 valign = 1
 
 [node name="Cable_cost" type="Label" parent="Panel"]
-margin_left = 33.7029
+margin_left = 49.7029
 margin_top = 128.784
-margin_right = 169.703
+margin_right = 185.703
 margin_bottom = 238.784
 rect_scale = Vector2( 0.2, 0.2 )
 custom_fonts/font = SubResource( 1 )
@@ -82,21 +82,10 @@ text = "$0"
 align = 1
 valign = 1
 
-[node name="Other_tile_cost" type="Label" parent="Panel"]
-margin_left = 113.703
-margin_top = 128.784
-margin_right = 249.703
-margin_bottom = 238.784
-rect_scale = Vector2( 0.2, 0.2 )
-custom_fonts/font = SubResource( 1 )
-text = "$-1"
-align = 1
-valign = 1
-
 [node name="Switch_cost" type="Label" parent="Panel"]
-margin_left = 193.703
+margin_left = 177.703
 margin_top = 128.784
-margin_right = 329.703
+margin_right = 313.703
 margin_bottom = 238.784
 rect_scale = Vector2( 0.2, 0.2 )
 custom_fonts/font = SubResource( 1 )
@@ -105,9 +94,9 @@ align = 1
 valign = 1
 
 [node name="FreeCableLabel" type="Label" parent="Panel"]
-margin_left = 16.7026
+margin_left = 32.7026
 margin_top = 146.784
-margin_right = 1001.7
+margin_right = 1017.7
 margin_bottom = 256.784
 rect_scale = Vector2( 0.1, 0.1 )
 custom_fonts/font = SubResource( 1 )
@@ -115,9 +104,9 @@ text = "Free cable(s)"
 valign = 1
 
 [node name="CableNum" type="Label" parent="Panel"]
-margin_left = -75.2974
+margin_left = -59.2974
 margin_top = 146.784
-margin_right = 811.703
+margin_right = 827.703
 margin_bottom = 256.784
 rect_scale = Vector2( 0.1, 0.1 )
 custom_fonts/font = SubResource( 1 )
@@ -126,19 +115,16 @@ align = 2
 valign = 1
 
 [node name="Cable_1_button" parent="Panel" instance=ExtResource( 1 )]
-position = Vector2( 9, 60 )
-
-[node name="future_tile_button" parent="Panel" instance=ExtResource( 1 )]
-position = Vector2( 89, 60 )
+position = Vector2( 25, 60 )
 
 [node name="Network_Switch" parent="Panel" instance=ExtResource( 4 )]
-position = Vector2( 169, 60 )
+position = Vector2( 153, 60 )
 
 [node name="Panel2" type="Panel" parent="."]
 margin_left = 48.0
-margin_top = 190.0
+margin_top = 161.0
 margin_right = 301.0
-margin_bottom = 348.0
+margin_bottom = 351.0
 
 [node name="instructions" type="Label" parent="Panel2"]
 margin_left = 10.0
@@ -205,13 +191,32 @@ text = "LEFT CLICK: PLACE SELECTED"
 align = 1
 valign = 1
 
-[node name="scrollwheel" type="Label" parent="Panel2"]
+[node name="scrollwheelup" type="Label" parent="Panel2"]
 margin_left = 10.0
 margin_top = 135.0
 margin_right = 1122.0
 margin_bottom = 245.0
 rect_scale = Vector2( 0.16, 0.16 )
 custom_fonts/font = SubResource( 2 )
-text = "SCROLL WHEEL: ROTATE"
-align = 1
+text = "SCROLL UP: ROTATE"
+valign = 1
+
+[node name="scrollwheeldown" type="Label" parent="Panel2"]
+margin_left = 10.0
+margin_top = 167.0
+margin_right = 1122.0
+margin_bottom = 277.0
+rect_scale = Vector2( 0.16, 0.16 )
+custom_fonts/font = SubResource( 2 )
+text = "MIDDLE CLICK: MAKE ANGLED"
+valign = 1
+
+[node name="middleclick" type="Label" parent="Panel2"]
+margin_left = 10.0
+margin_top = 151.0
+margin_right = 1122.0
+margin_bottom = 261.0
+rect_scale = Vector2( 0.16, 0.16 )
+custom_fonts/font = SubResource( 2 )
+text = "SCROLL DOWN: MIRROR"
 valign = 1
