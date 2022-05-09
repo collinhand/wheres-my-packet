@@ -15,4 +15,5 @@ func _on_ExitButton_pressed():
 	pass # Replace with function body.
 	
 func _ready():
+	$FluffingADuck.play()
 	pass

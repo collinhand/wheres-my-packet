@@ -32,6 +32,7 @@ func _on_Area2D_input_event(_viewport, event, _shape_idx):
 	if event is InputEventMouseButton and event.pressed:
 		match event.button_index:
 			BUTTON_LEFT:
+				$buttonSound.play()
 				if baseTile:
 					if (Inventory.selectedTile != "NULL"):					
 						Board.placeTile(self)

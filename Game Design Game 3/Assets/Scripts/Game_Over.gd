@@ -20,6 +20,7 @@ func _ready():
 			totalScore += Global.levelScores[i]
 		self.get_node("Panel/lvl" + str(i) + "spent").text = "LEVEL " + str(i) + score
 	self.get_node("Panel/final_score").text = "$" + str(totalScore)
+	$backgroundSound.play()
 	pass # Replace with function body.
 
 

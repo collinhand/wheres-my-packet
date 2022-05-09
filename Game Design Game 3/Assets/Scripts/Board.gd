@@ -69,6 +69,7 @@ func placeTile(T):
 	if T.baseTile == true: #delete empty tile from board
 		T.queue_free()
 	updateGUI()
+	$buttonSound.play()
 #reverse of place tile deletes currently placed tile and places an empty one back
 func deleteTile(T):
 	var _tile 
@@ -87,6 +88,7 @@ func deleteTile(T):
 			Inventory.MONEY_SPENT = 0
 		updateGUI()	
 		T.queue_free() # delete tile that was there
+		$buttonSound2.play()
 func _input(_event):
 	if Input.is_key_pressed(KEY_SPACE) and !simStarted:	
 		emit_signal("_simStarted")	
@@ -98,6 +100,8 @@ func _input(_event):
 		print("Game Won")
 		get_tree().change_scene("res://Assets/Scenes/Win Screen.tscn")
 		
+		#$buttonSound3.play()
+		
 		# reset money spent and cable count
 		Inventory.MONEY_SPENT = 0
 		Inventory.FREE_CABLE_CNT = 0
@@ -105,6 +109,9 @@ func _input(_event):
 	if Input.is_key_pressed(KEY_BACKSPACE):
 		print("Resetting level")
 		get_tree().change_scene("res://Assets/Scenes/level" + str(Global.currentLevel) + ".tscn")
+		
+		#$buttonSound3.play()
+		#$buttonSound2.play()
 	pass
 
 
